@@ -1,0 +1,74 @@
+/* Entry point */
+ENTRY(Reset_Handler)
+
+/* Stack size */
+_estack_size = 0x00001000;   /* 4 KB */
+
+/* Memory regions */
+MEMORY
+{
+    FLASH (rx)  : ORIGIN = 0x08000000, LENGTH = 2048K
+    RAM   (rwx) : ORIGIN = 0x20000000, LENGTH = 128K   /* DTCM */
+}
+
+/* Top of stack */
+_estack = ORIGIN(RAM) + LENGTH(RAM);
+
+/* Sections */
+SECTIONS
+{
+    /* Vector table at start of Flash */
+    .isr_vector :
+    {
+        . = ALIGN(4);
+        KEEP(*(.isr_vector))
+        . = ALIGN(4);
+    } > FLASH
+
+    /* Code and read-only data */
+    .text :
+    {
+        . = ALIGN(4);
+        *(.text*)
+        *(.rodata*)
+        *(.glue_7)
+        *(.glue_7t)
+        *(.eh_frame)
+        . = ALIGN(4);
+    } > FLASH
+
+    /* Initialized data (Flash -> RAM) */
+    _sidata = LOADADDR(.data);
+
+    .data :
+    {
+        . = ALIGN(4);
+        _sdata = .;
+        *(.data*)
+        . = ALIGN(4);
+        _edata = .;
+    } > RAM AT > FLASH
+
+    /* Uninitialized data */
+    .bss :
+    {
+        . = ALIGN(4);
+        _sbss = .;
+        *(.bss*)
+        *(COMMON)
+        . = ALIGN(4);
+        _ebss = .;
+    } > RAM
+
+    /* Optional heap */
+    ._user_heap_stack :
+    {
+        . = ALIGN(8);
+        PROVIDE(_heap_start = .);
+        . = . + 0x00001000;   /* 4 KB heap */
+        PROVIDE(_heap_end = .);
+    } > RAM
+
+    /* End of RAM used */
+    _end = .;
+}
