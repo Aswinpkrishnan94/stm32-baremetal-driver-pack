@@ -19,10 +19,12 @@
 
 #define APB1_BASE           (PERIPH_BASE + 0x00000000UL)
 #define APB2_BASE           (PERIPH_BASE + 0x00010000UL)
+#define APB3_BASE           (PERIPH_BASE + 0x10000000UL)
+#define APB4_BASE           (PERIPH_BASE + 0x18000000UL)
 #define AHB1_BASE           (PERIPH_BASE + 0x00020000UL)
-#define AHB2_BASE           (PERIPH_BASE + 0x10000000UL)
-#define AHB3_BASE           (PERIPH_BASE + 0x20000000UL)
-#define AHB4_BASE           (PERIPH_BASE + 0x30000000UL)
+#define AHB2_BASE           (PERIPH_BASE + 0x08020000UL)
+#define AHB3_BASE           (PERIPH_BASE + 0x11000000UL)
+#define AHB4_BASE           (PERIPH_BASE + 0x18020000UL)
 
 /* ========================= */
 /*     AHB1 Peripherals      */
@@ -30,8 +32,8 @@
 
 #define DMA1_BASE           (AHB1_BASE + 0x0000UL)
 #define DMA2_BASE           (AHB1_BASE + 0x0400UL)
-#define RCC_BASE            (AHB1_BASE + 0x3800UL)
-#define FLASH_REG_BASE      (AHB1_BASE + 0x3C00UL)
+#define RCC_BASE            (AHB4_BASE + 0x4400UL)
+#define FLASH_REG_BASE      (AHB3_BASE + 0x01000000UL)
 
 
 /* ========================= */
