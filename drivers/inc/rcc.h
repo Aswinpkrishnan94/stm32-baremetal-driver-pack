@@ -37,7 +37,7 @@ typedef struct{
 	    volatile uint32_t APB4ENR;      // 0xF4
 }RCC_RegDef_t;
 
-#define RCC		((RCC_RegDef_t*)RCC_BASE_ADDR);
+#define RCC		((RCC_RegDef_t*)RCC_BASE_ADDR)
 
 #define RCC_AHB1ENR			(*(volatile uint32_t*)(RCC_BASE_ADDR + 0x0D8))
 #define RCC_AHB2ENR			(*(volatile uint32_t*)(RCC_BASE_ADDR + 0x0DC))
