@@ -1,10 +1,11 @@
 #ifndef INC_RCC_H_
 #define INC_RCC_H_
 
+#include "stdint.h"
 #define RCC_BASE_ADDR		0x58024400
 
 typedef struct{
-	volatile uint32_t CR;           // 0x00: Clock control
+		volatile uint32_t CR;           // 0x00: Clock control
 	    volatile uint32_t HSICFGR;      // 0x04: HSI calibration
 	    volatile uint32_t CFGR;         // 0x08: Clock configuration
 	    volatile uint32_t PLLCKSELR;    // 0x0C: PLL clock source selection (H7!)
@@ -48,14 +49,37 @@ typedef struct{
 #define RCC_APB3ENR			(*(volatile uint32_t*)(RCC_BASE_ADDR + 0x0E4))
 #define RCC_APB4ENR			(*(volatile uint32_t*)(RCC_BASE_ADDR + 0x0F4))
 
-#define RCC_AHB4_GPIOA			1 << 0
-#define RCC_AHB4_GPIOB			1 << 1
-#define RCC_AHB4_GPIOC			1 << 2
-#define RCC_AHB4_GPIOD			1 << 3
-#define RCC_AHB4_GPIOE			1 << 4
-#define RCC_AHB4_GPIOF			1 << 5
-#define RCC_AHB4_GPIOG			1 << 6
-#define RCC_AHB4_GPIOH			1 << 7
+#define RCC_CR_HSION          (1 << 0)   // HSI enable
+#define RCC_CR_HSIKERON       (1 << 8)   // HSI keep during run
+#define RCC_CR_HSIRDY         (1 << 10)  // HSI ready
+#define RCC_CR_HSEON          (1 << 16)  // HSE enable
+#define RCC_CR_PLL1ON         (1 << 25)  // PLL1 enable
+#define RCC_CR_PLL1RDY        (1 << 26)  // PLL1 ready
+
+#define RCC_AHB1ENR_GPIOAEN   (1 << 0)   // GPIOA clock enable
+#define RCC_AHB1ENR_GPIOBEN   (1 << 1)	 // GPIOB clock enable
+#define RCC_AHB1ENR_GPIOCEN   (1 << 2)	 // GPIOC clock enable
+#define RCC_AHB1ENR_GPIODEN   (1 << 3)	 // GPIOD clock enable
+#define RCC_AHB1ENR_GPIOEEN   (1 << 4)	 // GPIOE clock enable
+#define RCC_AHB1ENR_GPIOFEN   (1 << 5)   // GPIOF clock enable
+#define RCC_AHB1ENR_GPIOGEN   (1 << 6)   // GPIOG clock enable
+#define RCC_AHB1ENR_GPIOHEN   (1 << 7)	 // GPIOH clock enable
+
+#define RCC_GPIOA_CLK_EN_BIT     0
+#define RCC_GPIOB_CLK_EN_BIT     1
+#define RCC_GPIOC_CLK_EN_BIT     2
+#define RCC_GPIOD_CLK_EN_BIT     3
+#define RCC_GPIOE_CLK_EN_BIT     4
+#define RCC_GPIOF_CLK_EN_BIT     5
+#define RCC_GPIOG_CLK_EN_BIT     6
+#define RCC_GPIOH_CLK_EN_BIT     7
+
+#define RCC_GPIOA_CLK_EN()    RCC_AHB1_CLK_EN(RCC_GPIOA_CLK_EN_BIT)
+#define RCC_GPIOB_CLK_EN()    RCC_AHB1_CLK_EN(RCC_GPIOB_CLK_EN_BIT)
+#define RCC_USART2_CLK_EN()   RCC_APB1_CLK_EN(RCC_USART2_CLK_EN_BIT)
+#define RCC_SPI2_CLK_EN()     RCC_APB1_CLK_EN(RCC_SPI2_CLK_EN_BIT)
+#define RCC_GPIOI_CLK_EN()    RCC_AHB4_CLK_EN(RCC_GPIOI_CLK_EN_BIT)
+#define RCC_GPIOK_CLK_EN()    RCC_AHB4_CLK_EN(RCC_GPIOK_CLK_EN_BIT)
 
 void RCC_AHB1_CLK_EN(uint32_t mask);
 void RCC_AHB1_CLK_DI(uint32_t mask);
