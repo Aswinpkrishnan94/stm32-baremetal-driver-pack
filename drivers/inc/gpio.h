@@ -26,19 +26,40 @@ typedef struct{
 	volatile uint32_t LCKR;
 	volatile uint32_t AFRL;
 	volatile uint32_t AFRH;
-}GPIO_TypeDef_t;
+}GPIO_RegDef_t;
 
-#define GPIOA				(GPIO_TypeDef_t*)GPIOA_BASE)
-#define GPIOB				(GPIO_TypeDef_t*)GPIOB_BASE)
-#define GPIOC				(GPIO_TypeDef_t*)GPIOC_BASE)
-#define GPIOD				(GPIO_TypeDef_t*)GPIOD_BASE)
-#define GPIOE				(GPIO_TypeDef_t*)GPIOE_BASE)
-#define GPIOF				(GPIO_TypeDef_t*)GPIOF_BASE)
-#define GPIOG				(GPIO_TypeDef_t*)GPIOG_BASE)
-#define GPIOH				(GPIO_TypeDef_t*)GPIOH_BASE)
+typedef struct
+{
+    uint8_t GPIO_PinNumber;         /* GPIO_PIN_NUMBERS                           */
+    uint8_t GPIO_PinMode;           /* GPIO_PIN_MODES                             */
+    uint8_t GPIO_PinSpeed;          /* GPIO_PIN_SPEED                             */
+    uint8_t GPIO_PinPuPdControl;    /* GPIO_PIN_PULL_UP_PULL_DOWN                 */
+    uint8_t GPIO_PinOPType;         /* GPIO_PIN_OUTPUT_TYPE                       */
+    uint8_t GPIO_PinAltFunMode;    
+}GPIO_PinConfig_t;
 
-void GPIO_Init(uint32_t *pGPIOx, uint8_t EnorDi);
-void GPIO_DeInit(uint32_t *pGPIOx, uint8_t EnorDi);
-void GPIO_WritePin(uint32_t* pGPIOx, uint16_t Pin_Number, uint8_t Pin_State);
-void GPIO_ReadPin(uint32_t* pGPIOx, uint16_t Pin_Number);
-void GPIO_TogglePin(uint32_t* pGPIOx,uint16_t Pin_Number);
+typedef struct
+{
+    GPIO_RegDef_t *pGPIOx;              /* This holds the base address of the GPIO port to which the pin belongs */
+    GPIO_PinConfig_t GPIO_PinConfig;    /* This holds GPIO pin configuration settings                            */
+}GPIO_Handle_t;
+
+#define GPIOA				(GPIO_RegDef_t*)GPIOA_BASE)
+#define GPIOB				(GPIO_RegDef_t*)GPIOB_BASE)
+#define GPIOC				(GPIO_RegDef_t*)GPIOC_BASE)
+#define GPIOD				(GPIO_RegDef_t*)GPIOD_BASE)
+#define GPIOE				(GPIO_RegDef_t*)GPIOE_BASE)
+#define GPIOF				(GPIO_RegDef_t*)GPIOF_BASE)
+#define GPIOG				(GPIO_RegDef_t*)GPIOG_BASE)
+#define GPIOH				(GPIO_RegDef_t*)GPIOH_BASE)
+
+
+void GPIO_PCLKCTRL(GPIO_RegDef_t *pGPIOx, uint8_t EnorDi);
+void GPIO_Init(GPIO_Handle_t *pGPIOHandle);
+uint8_t GPIO_ReadFromInputPin(GPIO_RegDef_t *pGPIOx, uint8_t PinNumber);
+uint16_t GPIO_ReadFromInputPort(GPIO_RegDef_t *pGPIOx);
+void GPIO_WriteToOutputPin(GPIO_RegDef_t *pGPIOx, uint8_t PinNumber, uint8_t Value);
+void GPIO_WriteToOutputPort(GPIO_RegDef_t *pGPIOx, uint16_t Value);
+void GPIO_ToggleOutputPin(GPIO_RegDef_t *pGPIOx, uint8_t PinNumber);
+
+#endif /* INC_GPIO_H_ */
