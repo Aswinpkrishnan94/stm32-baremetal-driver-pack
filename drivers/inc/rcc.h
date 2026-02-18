@@ -57,22 +57,22 @@ typedef struct{
 #define RCC_AHB4_GPIOG			1 << 6
 #define RCC_AHB4_GPIOH			1 << 7
 
-void RCC_AHB1_CLK_EN(void);
-void RCC_AHB1_CLK_DI(void);
-void RCC_AHB2_CLK_EN(void);
-void RCC_AHB2_CLK_DI(void);
-void RCC_AHB3_CLK_EN(void);
-void RCC_AHB3_CLK_DI(void);
-void RCC_AHB4_CLK_EN(void);
-void RCC_AHB4_CLK_DI(void);
+void RCC_AHB1_CLK_EN(uint32_t mask);
+void RCC_AHB1_CLK_DI(uint32_t mask);
+void RCC_AHB2_CLK_EN(uint32_t mask);
+void RCC_AHB2_CLK_DI(uint32_t mask);
+void RCC_AHB3_CLK_EN(uint32_t mask);
+void RCC_AHB3_CLK_DI(uint32_t mask);
+void RCC_AHB4_CLK_EN(uint32_t mask);
+void RCC_AHB4_CLK_DI(uint32_t mask);
 
-void RCC_APB1_CLK_EN(void);
-void RCC_APB1_CLK_DI(void);
-void RCC_APB2_CLK_EN(void);
-void RCC_APB2_CLK_DI(void);
-void RCC_APB3_CLK_EN(void);
-void RCC_APB3_CLK_DI(void);
-void RCC_APB4_CLK_EN(void);
-void RCC_APB4_CLK_DI(void);
+void RCC_APB1_CLK_EN(uint32_t mask);
+void RCC_APB1_CLK_DI(uint32_t mask);
+void RCC_APB2_CLK_EN(uint32_t mask);
+void RCC_APB2_CLK_DI(uint32_t mask);
+void RCC_APB3_CLK_EN(uint32_t mask);
+void RCC_APB3_CLK_DI(uint32_t mask);
+void RCC_APB4_CLK_EN(uint32_t mask);
+void RCC_APB4_CLK_DI(uint32_t mask);
 
 #endif /* INC_RCC_H_ */
