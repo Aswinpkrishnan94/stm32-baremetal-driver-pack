@@ -99,7 +99,4 @@ void RCC_APB3_CLK_DI(uint32_t mask);
 void RCC_APB4_CLK_EN(uint32_t mask);
 void RCC_APB4_CLK_DI(uint32_t mask);
 
-// System clock init (480MHz HCLK for Nucleo-H753ZI)
-void SystemClock_Config(void);
-
 #endif /* INC_RCC_H_ */
