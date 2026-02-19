@@ -6,6 +6,13 @@
 #define ENABLE 1
 #define DISABLE 0
 
+typedef enum
+{
+  GPIO_PIN_RESET = 0,
+  GPIO_PIN_SET = 1
+} GPIO_PinState;
+
+
 #define PERIPH_BASE         0x40000000UL
 #define AHB4_BASE          (PERIPH_BASE + 0x18020000UL)
 
