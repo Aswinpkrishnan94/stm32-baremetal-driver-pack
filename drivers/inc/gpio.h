@@ -1,3 +1,17 @@
+/*
+ * Driver: GPIO
+ *
+ * Features:
+ * - Register-level control
+ * - Atomic write using BSRR
+ * - Minimal deterministic configuration
+ *
+ * Design Goals:
+ * - No HAL dependency
+ * - Production-style abstraction
+ * - Extendable for alternate functions, pull, speed
+ */
+
 #include "stdint.h"
 
 #ifndef INC_GPIO_H_
