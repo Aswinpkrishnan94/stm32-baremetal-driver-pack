@@ -8,6 +8,7 @@
  * Design Goals:
  * - No HAL dependency
  * - Production-style abstraction
+ * Extendable for others
  */
 
 #ifndef INC_RCC_H_
