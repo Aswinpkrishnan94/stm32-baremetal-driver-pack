@@ -29,36 +29,36 @@ Architecture Overview
 
 **Week 1 – Core Bring-up**
 
-Custom startup code (vector table, Reset_Handler)
-Manual .data and .bss initialization
-Custom linker script (Flash/RAM layout)
-
-System entry structure:
-Reset_Handler → system_init() → main()
+    Custom startup code (vector table, Reset_Handler)
+    Manual .data and .bss initialization
+    Custom linker script (Flash/RAM layout)
+    
+    System entry structure:
+    Reset_Handler → system_init() → main()
 
 
 
 **Week 2 - Driver Foundation**
 
-Core
-    Memory map (core/memory_map.h)
-    System initialization layer (core/system)
-
-Drivers
-RCC
-    Peripheral clock enable
-    Peripheral reset support
-    Read-back synchronization
-GPIO
-    Pin initialization
-    Read / Write / Toggle
-    Atomic output using BSRR
-
-BSP
-    Board abstraction (bsp/board)
-    LED mapped to PA5
-    Application does not access registers directly
-
-Example
-    examples/led_blink
-    Demonstrates full boot → BSP → driver → hardware flow.
+    Core
+        Memory map (core/memory_map.h)
+        System initialization layer (core/system)
+    
+    Drivers
+    RCC
+        Peripheral clock enable
+        Peripheral reset support
+        Read-back synchronization
+    GPIO
+        Pin initialization
+        Read / Write / Toggle
+        Atomic output using BSRR
+    
+    BSP
+        Board abstraction (bsp/board)
+        LED mapped to PA5
+        Application does not access registers directly
+    
+    Example
+        examples/led_blink
+        Demonstrates full boot → BSP → driver → hardware flow.
