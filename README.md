@@ -25,7 +25,8 @@ Architecture Overview
     5) Minimal and scalable drivers
 
 
-Week 1 – Core Bring-up
+
+##Week 1 – Core Bring-up
 
 Custom startup code (vector table, Reset_Handler)
 Manual .data and .bss initialization
@@ -34,7 +35,8 @@ Custom linker script (Flash/RAM layout)
 System entry structure:
 Reset_Handler → system_init() → main()
 
-Week 2 - Driver Foundation
+
+##Week 2 - Driver Foundation
 
 Core
     Memory map (core/memory_map.h)
