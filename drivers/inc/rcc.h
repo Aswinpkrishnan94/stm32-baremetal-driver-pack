@@ -1,3 +1,15 @@
+/*
+ * Driver: RCC
+ *
+ * Features:
+ * - Register-level control
+ * * - Minimal deterministic configuration
+ 
+ * Design Goals:
+ * - No HAL dependency
+ * - Production-style abstraction
+ */
+
 #ifndef INC_RCC_H_
 #define INC_RCC_H_
 
