@@ -62,3 +62,6 @@ Architecture Overview
     Example
         examples/led_blink
         Demonstrates full boot → BSP → driver → hardware flow.
+
+**Week 3**
+        Day 1 - bit macros
