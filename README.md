@@ -66,3 +66,4 @@ Architecture Overview
 **Week 3 ** 
       
       Day 1 - bit macros
+      Day 2 - Systick Register Layer
