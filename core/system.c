@@ -1,4 +1,7 @@
 #include "system.h"
+#include "delay.h"
+
+#define SYSTEM_CORE_CLK		64000000
 
 void System_Init(void)
 {
@@ -8,4 +11,6 @@ void System_Init(void)
 	    - Cache enable (H7)
 	    - MPU setup
 	*/
+
+	delay_init(SYSTEM_CORE_CLK_);
 }
