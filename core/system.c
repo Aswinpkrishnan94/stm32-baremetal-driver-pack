@@ -11,6 +11,6 @@ void System_Init(void)
 	    - Cache enable (H7)
 	    - MPU setup
 	*/
-
-	delay_init(SYSTEM_CORE_CLK_);
+	clock_init_hsi();
+	delay_init(SYSTEM_CORE_CLK);
 }
