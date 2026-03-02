@@ -69,3 +69,4 @@ Architecture Overview
       Day 2 - Systick Register Layer
       Day 3 - Delay Module (System Time Base)
       Day 4 - Clock Source Control (HSI clock control)
+      Day 5 - PLL Configuration
