@@ -83,7 +83,6 @@ void clock_init_pll(void)
 void SystemCoreClockUpdate(void)
 {
 	 /*
-	     * For now we only support:
 	     * HSI  = 16 MHz
 	     * PLL  = 64 MHz
 	     */
