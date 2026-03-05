@@ -12,5 +12,6 @@ void System_Init(void)
 	    - MPU setup
 	*/
 	clock_init_pll();
+	SystemCoreClockUpdate();
 	delay_init(SystemCoreClock);
 }
