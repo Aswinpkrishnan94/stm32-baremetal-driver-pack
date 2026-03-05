@@ -79,3 +79,25 @@ void clock_init_pll(void)
     /* 5. Update system clock variable */
     SystemCoreClock = 64000000U;
 }
+
+void SystemCoreClockUpdate(void)
+{
+	 /*
+	     * For now we only support:
+	     * HSI  = 16 MHz
+	     * PLL  = 64 MHz
+	     */
+
+	    uint32_t clock_source = RCC_CFGR & 0xC;
+
+	    if (clock_source == 0x0)
+	    {
+	        /* HSI */
+	        SystemCoreClock = 16000000;
+	    }
+	    else if (clock_source == (0x3 << 2))
+	    {
+	        /* PLL */
+	        SystemCoreClock = 64000000;
+	    }
+}
