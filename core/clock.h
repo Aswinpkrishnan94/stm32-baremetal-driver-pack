@@ -5,6 +5,7 @@
 
 extern uint32_t SystemCoreClock;
 
+void SystemCoreClockUpdate(void);
 void clock_init_hsi(void);
 void clock_init_pll(void);
 
